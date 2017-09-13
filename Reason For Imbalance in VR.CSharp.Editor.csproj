@@ -5,16 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4BFAD843-76FF-CA1D-6105-08329575D628}</ProjectGuid>
+    <ProjectGuid>{93349E59-6A7D-2E33-7A46-7BB3426461C5}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <AssemblyName>Assembly-CSharp</AssemblyName>
+    <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Unity Full v3.5</TargetFrameworkProfile>
     <CompilerResponseFile></CompilerResponseFile>
-    <UnityProjectType>Game:1</UnityProjectType>
+    <UnityProjectType>Editor:5</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows64:19</UnityBuildTarget>
     <UnityVersion>5.6.3f1</UnityVersion>
     <RootNamespace></RootNamespace>
@@ -52,11 +52,26 @@
     <Reference Include="UnityEngine">
       <HintPath>Library\UnityAssemblies\UnityEngine.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Advertisements">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Advertisements.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\UnityAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.UI">
+      <HintPath>Library\UnityAssemblies\UnityEditor.UI.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Networking">
       <HintPath>Library\UnityAssemblies\UnityEngine.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Networking">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.TestRunner">
+      <HintPath>Library\UnityAssemblies\UnityEditor.TestRunner.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TestRunner">
       <HintPath>Library\UnityAssemblies\UnityEngine.TestRunner.dll</HintPath>
@@ -64,130 +79,71 @@
     <Reference Include="nunit.framework">
       <HintPath>Library\UnityAssemblies\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.TreeEditor">
+      <HintPath>Library\UnityAssemblies\UnityEditor.TreeEditor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Analytics">
       <HintPath>Library\UnityAssemblies\UnityEngine.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.Analytics">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.HoloLens">
+      <HintPath>Library\UnityAssemblies\UnityEditor.HoloLens.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.HoloLens">
       <HintPath>Library\UnityAssemblies\UnityEngine.HoloLens.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEditor.Purchasing">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Purchasing.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.VR">
+      <HintPath>Library\UnityAssemblies\UnityEditor.VR.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.VR">
       <HintPath>Library\UnityAssemblies\UnityEngine.VR.dll</HintPath>
     </Reference>
-    <Reference Include="UnityEditor">
-      <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
+    <Reference Include="UnityEditor.Graphs">
+      <HintPath>Library\UnityAssemblies\UnityEditor.Graphs.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.WindowsStandalone.Extensions">
+      <HintPath>Library\UnityAssemblies\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="SyntaxTree.VisualStudio.Unity.Bridge">
+      <HintPath>Library\UnityAssemblies\SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="Reason For Imbalance.CSharp.Plugins.csproj">
-      <Project>{D08E7D19-1887-3A8B-D5F7-17CDA4BD469F}</Project>
-      <Name>Reason For Imbalance.CSharp.Plugins</Name>
+    <ProjectReference Include="Reason For Imbalance in VR.CSharp.Plugins.csproj">
+      <Project>{446CE02C-4A1F-519B-2EE9-304A5938B5CF}</Project>
+      <Name>Reason For Imbalance in VR.CSharp.Plugins</Name>
+    </ProjectReference>
+    <ProjectReference Include="Reason For Imbalance in VR.CSharp.csproj">
+      <Project>{BC6FC141-408C-EDFE-62A5-1CA54264F79F}</Project>
+      <Name>Reason For Imbalance in VR.CSharp</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\FrameRateModifier.cs" />
-    <Compile Include="Assets\Scripts\RenderToCubeMap.cs" />
-    <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
-    <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
-    <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
-    <Compile Include="Assets\SteamVR\Extras\SteamVR_TestThrow.cs" />
-    <Compile Include="Assets\SteamVR\Extras\SteamVR_TestTrackedCamera.cs" />
-    <Compile Include="Assets\SteamVR\Extras\SteamVR_TrackedController.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\BodyCollider.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\CircularDrive.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\ComplexThrowable.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\ControllerHoverHighlight.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\CustomEvents.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DebugUI.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DestroyOnDetachedFromHand.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DestroyOnParticleSystemDeath.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DestroyOnTriggerEnter.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DistanceHaptics.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\DontDestroyOnLoad.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\EnumFlags.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\FallbackCameraController.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Hand.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\HapticRack.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\HideOnHandFocusLost.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\IgnoreHovering.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\InputModule.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Interactable.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\InteractableButtonEvents.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\InteractableHoverEvents.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\ItemPackage.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\ItemPackageReference.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\ItemPackageSpawner.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearAnimation.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearAnimator.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearAudioPitch.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearBlendshape.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearDisplacement.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearDrive.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\LinearMapping.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\PlaySound.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Player.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SeeThru.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SleepOnAwake.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SoundDeparent.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SoundPlayOneshot.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SpawnAndAttachAfterControllerIsTracking.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SpawnAndAttachToHand.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\SpawnRenderModel.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Throwable.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\UIElement.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Unparent.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\Util.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Core\Scripts\VelocityEstimator.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Hints\Scripts\ControllerButtonHints.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\ArcheryTarget.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\Arrow.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\ArrowHand.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\ArrowheadRotation.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\Balloon.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\BalloonColliders.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\BalloonHapticBump.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\BalloonSpawner.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\ExplosionWobble.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\FireSource.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\Longbow.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Longbow\Scripts\SoundBowClick.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Samples\Scripts\ControllerHintsExample.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Samples\Scripts\InteractableExample.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\AllowTeleportWhileAttachedToHand.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\ChaperoneInfo.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\IgnoreTeleportTrace.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\Teleport.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportArc.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportArea.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportMarkerBase.cs" />
-    <Compile Include="Assets\SteamVR\InteractionSystem\Teleport\Scripts\TeleportPoint.cs" />
-    <Compile Include="Assets\SteamVR\Plugins\openvr_api.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_Camera.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_CameraFlip.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_CameraMask.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_Controller.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_ControllerManager.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_Ears.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_Events.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_ExternalCamera.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_Fade.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_Frustum.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_GameView.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_IK.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_LoadLevel.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_Menu.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_Overlay.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_PlayArea.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_Render.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_RenderModel.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_Skybox.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_SphericalProjection.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_Stats.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_TestController.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedCamera.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
-    <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
+    <Compile Include="Assets\Models\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\AntialiasingEditor.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\BloomAndFlaresEditor.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\BloomEditor.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\CameraMotionBlurEditor.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\ColorCorrectionCurvesEditor.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\ColorCorrectionLookupEditor.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\DepthOfFieldDeprecatedEditor.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\DepthOfFieldEditor.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\EdgeDetectionEditor.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\NoiseAndGrainEditor.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\SunShaftsEditor.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\TonemappingEditor.cs" />
+    <Compile Include="Assets\Models\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs" />
+    <Compile Include="Assets\SteamVR\Editor\SteamVR_Editor.cs" />
+    <Compile Include="Assets\SteamVR\Editor\SteamVR_Preferences.cs" />
+    <Compile Include="Assets\SteamVR\Editor\SteamVR_RenderModelEditor.cs" />
+    <Compile Include="Assets\SteamVR\Editor\SteamVR_Settings.cs" />
+    <Compile Include="Assets\SteamVR\Editor\SteamVR_SkyboxEditor.cs" />
+    <Compile Include="Assets\SteamVR\Editor\SteamVR_Update.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />

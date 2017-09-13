@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FrameRateModifier : MonoBehaviour {
 
-    void Awake ( ) {
-        //Application.targetFrameRate = 10;
+    void Update ( ) {
+        System.Threading.Thread.Sleep ( 100 );
+        Debug.Log ( "Framerate" + (1/Time.deltaTime) );
     }
 }
