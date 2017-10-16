@@ -56,11 +56,8 @@ public class RecordCOP : MonoBehaviour
         }
         displayMessage = "Press 'R' to start recording data";
         sb = new StringBuilder();
-        sb.Append("System Time,Elapsed Time,Gravity X,Gravity Y, PathX, PathY, Path, Weight\n");
+        sb.Append("System Time,Elapsed Time,Gravity X,Gravity Y, PathX, PathY, Path, Weight, Direction\n");
         StartCoroutine(WriteInFile());
-        StartCoroutine(PlayInstructions());
-
-
     }
 
     IEnumerator WriteInFile()
@@ -85,7 +82,8 @@ public class RecordCOP : MonoBehaviour
             }
             if (isWriting)
             {
-                sb.Append(String.Format("{0},{1},{2},{3},{4},{5},{6},{7}\n", System.DateTime.Now.ToString("hh.mm.ss.ffffff"), elapsedTime, gravX, gravY, pathX, pathY, path, weight));
+                sb.Append(String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}\n", 
+                    System.DateTime.Now.ToString("hh.mm.ss.ffffff"), elapsedTime, gravX, gravY, pathX, pathY, path, weight,lookingDirection));
                 prevGravX = gravX;
                 prevGravY = gravY;
                 isFirstRow = false;
@@ -96,16 +94,27 @@ public class RecordCOP : MonoBehaviour
 
     }
 
+    string lookingDirection = "front";
+
     string[] instructions = {
-        // start with normal navigation
+        // Start with normal navigation
         "left", "right", "top", "bottom", "front",
         "left", "right", "top", "bottom", "front",
         // Do a left right (horizontal) movement
-        "left", "right", "left", "right", "left", "right",
+        "left", "right", "left", "right",
         "left", "right", "left", "right", "front",
         // Do a top bottom (vertical) movement
-        "top", "bottom", "top", "bottom", "top", "bottom",
-        "top", "bottom", "top", "bottom", "front"
+        "top", "bottom", "top", "bottom",
+        "top", "bottom", "top", "bottom", "front",
+        // Do a top clockwise movement
+        "left", "top", "right", "bottom",
+        "left", "top", "right", "bottom", "front",
+        // Do a top anti-clockwise movement
+        "right", "top", "left", "bottom",
+        "right", "top", "left", "bottom", "front",
+        // End with normal navigation
+        "left", "right", "top", "bottom", "front",
+        "left", "right", "top", "bottom", "front",
     };
 
     public float delay = 2;
@@ -125,7 +134,8 @@ public class RecordCOP : MonoBehaviour
 
         for (int i = 0; i < instructions.Length; i++)
         {
-            audioPlayer.PlayAudio(instructions[i]);
+            lookingDirection = instructions[i];
+            audioPlayer.PlayAudio(lookingDirection);
             yield return new WaitForSeconds(delay);
         }
 
@@ -133,18 +143,11 @@ public class RecordCOP : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && !isWriting)
         {
-            if (isWriting)
-            {
-                isWriting = false;
-                displayMessage = "Press 'R' to start recording data";
-            }
-            else
-            {
-                isWriting = true;
-                displayMessage = "Data is recording... Press 'R' to stop";
-            }
+            isWriting = true;
+            displayMessage = "Data is recording...";
+            StartCoroutine(PlayInstructions());
         }
     }
 
