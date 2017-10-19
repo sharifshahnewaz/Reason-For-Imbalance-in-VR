@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AudioPlayer : MonoBehaviour
 {
-    public AudioClip readyConf;
+    public AudioClip readyConfirmation;
     public AudioClip three;
     public AudioClip two;
     public AudioClip one;
@@ -14,6 +14,8 @@ public class AudioPlayer : MonoBehaviour
     public AudioClip right;
     public AudioClip top;
     public AudioClip bottom;
+    public AudioClip thankYou;
+    public AudioClip recordDone;
 
     Dictionary<string, AudioClip> audios;
 
@@ -25,7 +27,7 @@ public class AudioPlayer : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
 
         audios = new Dictionary<string, AudioClip>();
-        audios.Add("readyConf", readyConf);
+        audios.Add("readyConf", readyConfirmation);
         audios.Add("three", three);
         audios.Add("two", two);
         audios.Add("one", one);
@@ -35,6 +37,8 @@ public class AudioPlayer : MonoBehaviour
         audios.Add("right", right);
         audios.Add("top", top);
         audios.Add("bottom", bottom);
+        audios.Add("thankYou", thankYou);
+        audios.Add("recordDone", recordDone);
     }
 
     public void PlayAudio(string audioName) {

@@ -82,8 +82,8 @@ public class RecordCOP : MonoBehaviour
             }
             if (isWriting)
             {
-                sb.Append(String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}\n", 
-                    System.DateTime.Now.ToString("hh.mm.ss.ffffff"), elapsedTime, gravX, gravY, pathX, pathY, path, weight,lookingDirection));
+                sb.Append(String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8}\n",
+                    System.DateTime.Now.ToString("hh.mm.ss.ffffff"), elapsedTime, gravX, gravY, pathX, pathY, path, weight, lookingDirection));
                 prevGravX = gravX;
                 prevGravY = gravY;
                 isFirstRow = false;
@@ -106,10 +106,22 @@ public class RecordCOP : MonoBehaviour
         // Do a top bottom (vertical) movement
         "top", "bottom", "top", "bottom",
         "top", "bottom", "top", "bottom", "front",
-        // Do a top clockwise movement
+        // Do a clockwise movement
         "left", "top", "right", "bottom",
         "left", "top", "right", "bottom", "front",
-        // Do a top anti-clockwise movement
+        // Do a anti-clockwise movement
+        "right", "top", "left", "bottom",
+        "right", "top", "left", "bottom", "front",
+        // Do a left right (horizontal) movement
+        "left", "right", "left", "right",
+        "left", "right", "left", "right", "front",
+        // Do a top bottom (vertical) movement
+        "top", "bottom", "top", "bottom",
+        "top", "bottom", "top", "bottom", "front",
+        // Do a clockwise movement
+        "left", "top", "right", "bottom",
+        "left", "top", "right", "bottom", "front",
+        // Do a anti-clockwise movement
         "right", "top", "left", "bottom",
         "right", "top", "left", "bottom", "front",
         // End with normal navigation
@@ -117,7 +129,7 @@ public class RecordCOP : MonoBehaviour
         "left", "right", "top", "bottom", "front",
     };
 
-    public float delay = 2;
+    public float delay = 1.5f;
 
     IEnumerator PlayInstructions()
     {
@@ -129,16 +141,22 @@ public class RecordCOP : MonoBehaviour
         yield return new WaitForSeconds(1);
         audioPlayer.PlayAudio("one");
         yield return new WaitForSeconds(1);
-        audioPlayer.PlayAudio("lookCommand");
+        if (!studyCondition.ToLower().Contains("eyes"))
+            audioPlayer.PlayAudio("lookCommand");
         yield return new WaitForSeconds(1.5f);
 
         for (int i = 0; i < instructions.Length; i++)
         {
             lookingDirection = instructions[i];
-            audioPlayer.PlayAudio(lookingDirection);
+            if (!studyCondition.ToLower().Contains("eyes"))
+                audioPlayer.PlayAudio(lookingDirection);
             yield return new WaitForSeconds(delay);
         }
-
+        isWriting = false;
+        displayMessage = "Data recording is done";
+        audioPlayer.PlayAudio("thankYou");
+        yield return new WaitForSeconds(1);
+        audioPlayer.PlayAudio("recordDone");
     }
 
     void Update()
