@@ -131,6 +131,28 @@ public class RecordCOP : MonoBehaviour
 
     public float delay = 1.5f;
 
+    IEnumerator WaitAMinute()
+    {
+        audioPlayer.PlayAudio("readyConf");
+        yield return new WaitForSeconds(2);
+        audioPlayer.PlayAudio("three");
+        yield return new WaitForSeconds(1);
+        audioPlayer.PlayAudio("two");
+        yield return new WaitForSeconds(1);
+        audioPlayer.PlayAudio("one");
+        yield return new WaitForSeconds(1);
+            //audioPlayer.PlayAudio("lookCommand");
+        yield return new WaitForSeconds(1.5f);
+
+        yield return new WaitForSeconds(60.0f);
+
+        isWriting = false;
+        displayMessage = "Data recording is done";
+        audioPlayer.PlayAudio("thankYou");
+        yield return new WaitForSeconds(1);
+        audioPlayer.PlayAudio("recordDone");
+    }
+
     IEnumerator PlayInstructions()
     {
         audioPlayer.PlayAudio("readyConf");
@@ -141,15 +163,14 @@ public class RecordCOP : MonoBehaviour
         yield return new WaitForSeconds(1);
         audioPlayer.PlayAudio("one");
         yield return new WaitForSeconds(1);
-        if (!studyCondition.ToLower().Contains("eyes"))
             audioPlayer.PlayAudio("lookCommand");
         yield return new WaitForSeconds(1.5f);
 
         for (int i = 0; i < instructions.Length; i++)
         {
             lookingDirection = instructions[i];
-            if (!studyCondition.ToLower().Contains("eyes"))
-                audioPlayer.PlayAudio(lookingDirection);
+
+            audioPlayer.PlayAudio(lookingDirection);
             yield return new WaitForSeconds(delay);
         }
         isWriting = false;
@@ -165,7 +186,10 @@ public class RecordCOP : MonoBehaviour
         {
             isWriting = true;
             displayMessage = "Data is recording...";
-            StartCoroutine(PlayInstructions());
+            if (studyCondition.ToLower().Contains("eyes"))
+                StartCoroutine(WaitAMinute());
+            else
+                StartCoroutine(PlayInstructions());
         }
     }
 
